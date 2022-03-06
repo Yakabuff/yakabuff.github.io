@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>basedbin</title>
+<style>
+	
+	
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>basedbin.org</h1>
+<p>Hello and welcome to my site. Projects, contact info and other misc things will be linked below</p>
+
+</body>
+</html>
