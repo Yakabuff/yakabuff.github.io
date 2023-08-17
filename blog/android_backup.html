@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset=utf-8>
+<title>basedbin</title>
+<style>
+    body {
+        width: 50%;
+        margin: auto; 
+	<!--font-family: Tahoma, Verdana, Arial, sans-serif;-->
+	font-family: "Times New Roman";
+    }
+    h4{
+	margin-bottom: 10px;
+	padding:0;
+    }
+    ul{
+	margin:0;
+    }
+    .logoArea {
+        border: 5px outset red;
+        background-color: lightblue;
+        text-align: center;
+        margin-top:20px;
+        margin-bottom:5px;
+	width: auto;
+	padding: 10px;
+     }
+</style>
+</head>
+<body>
+<div class="logoArea">
+<a href="http://basedbin.org"><img src="../img/basedbin_v2.png"></a>
+</div>
+<p style="text-align: center">
+<a href="http://basedbin.org/about.html">About</a> |
+<a href="http://basedbin.org/blog.html">Blog</a> |
+<a href="http://basedbin.org/downloads.html">Downloads</a> |
+<a href="http://basedbin.org/projects.html">Projects</a> |
+</p>
+<h1>How to backup your Android device </h1>
+<p><small>Jul. 13, 2022</small></p>
+<p>
+There are a million tools, programs and methods to backup your desktop, laptop, server etc but there is never mention of backing up your phone despite it probably being your most used device. It is under the assumption by phone manufacturers and the general public that you are probably using some cloud storage like Google drive or Google photos to backup the files on your phone. 
+</p>
+
+<p>For those who do not wish to use cloud storage, I found a neat solution on stackoverflow: <a href="https://stackoverflow.com/questions/55359419/can-rsync-be-used-to-transfer-files-from-android-client-to-linux-server-programm">https://stackoverflow.com/questions/55359419/can-rsync-be-used-to-transfer-files-from-android-client-to-linux-server-programm</a>.  I managed to transfer 50k images from my phone to my computer in 20 minutes.
+</p>
+
+<p>
+To sum it up, use rsync and adb. 
+<br>
+<ol>
+<li> Install a terminal on your Android device. I use Termux.  Make sure it has storage access permission. </li>
+<li> Install <code>rsync</code> on your computer.</li>
+<li> Set a password for the default user on your phone. Use command <code>passwd</code> </li>
+<li> Start the SSH daemon on your phone terminal (<code>sshd</code>) </li>
+<li> Install <code>adb</code> on your computer.  <a href="https://developer.android.com/studio/command-line/adb">https://developer.android.com/studio/command-line/adb</a></li>
+<li> Plug in your Android device.  You may want to enable USB debugging and grant it access to files</li>
+<li> On your computer: <code>adb forward tcp:8022 tcp:8022</code>.</li>
+<li> On your computer: <code>rsync -av -e 'ssh -p 8022' localhost:/storage/emulated/0/[target_folder] /[destination]</code> </li>
+</ol>
+</p>
+</html>
